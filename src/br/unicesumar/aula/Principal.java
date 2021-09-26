@@ -1,20 +1,20 @@
 package br.unicesumar.aula;
- 
-import br.unicesumar.aula.controle.ProjetoDAO;
-import br.unicesumar.aula.controle.ProjetoImpl;
-import br.unicesumar.aula.exceptions.DadoConsultadoException;
-import br.unicesumar.aula.modelo.Projeto;
- 
+
 import java.text.ParseException;
 import java.time.format.DateTimeParseException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
- 
+
+import br.unicesumar.aula.controle.ProjetoDAO;
+import br.unicesumar.aula.controle.ProjetoImpl;
+import br.unicesumar.aula.exceptions.DadoConsultadoException;
+import br.unicesumar.aula.modelo.Projeto;
+
 public class Principal {
     public static void main(String[] args) {
         ProjetoDAO dao = new ProjetoImpl();
         int opcao;
-        do{
+        do {
             System.out.println("Registro de projetos");
             System.out.println("1 - Cadastrar");
             System.out.println("2 - Alterar");
@@ -25,9 +25,9 @@ public class Principal {
             Scanner scannerMenu = new Scanner(System.in);
             opcao = scannerMenu.nextInt();
             try {
-                switch (opcao){
+                switch (opcao) {
                     case 1:
-                        Projeto projeto =new Projeto();
+                        Projeto projeto = new Projeto();
                         projeto.setNome(coletarTexto("Digite o nome do projeto"));
                         projeto.setObjetivo(coletarTexto("Digite os objetivos do projeto"));
                         projeto.setNecessidades(coletarTexto("Digite as necessidades do projeto"));
@@ -37,7 +37,8 @@ public class Principal {
                         dao.adicionar(projeto);
                         break;
                     case 2:
-                        String nomeConsultaAlterar = coletarTexto("Digite o nome do projeto que está buscando para alterar");
+                        String nomeConsultaAlterar = coletarTexto(
+                                "Digite o nome do projeto que está buscando para alterar");
                         Projeto projetoNovo = new Projeto();
                         projetoNovo.setNome(coletarTexto("Digite o nome do projeto"));
                         projetoNovo.setObjetivo(coletarTexto("Digite os objetivos do projeto"));
@@ -56,14 +57,15 @@ public class Principal {
                         System.out.println(projetoEncontrado);
                         break;
                     case 5:
-                        String nomeConsultaExcluir = coletarTexto("Digite o nome do projeto que está buscando para excluir");
+                        String nomeConsultaExcluir = coletarTexto(
+                                "Digite o nome do projeto que está buscando para excluir");
                         dao.excluir(nomeConsultaExcluir);
                         break;
                     case 0:
                         break;
                 }
- 
-            }catch (InputMismatchException e){
+
+            } catch (InputMismatchException e) {
                 System.out.println("Não foi possível registrar corretamente a sua opção.");
             } catch (ParseException | DateTimeParseException e) {
                 System.out.println("Não foi possível converter a data, tente informar dd/mm/aaaa");
@@ -71,13 +73,12 @@ public class Principal {
                 System.out.println(e.getMessage());
             }
             coletarTexto("----");
-        }while (opcao!=0);
+        } while (opcao != 0);
     }
- 
-    private static String coletarTexto(String descricao){
+
+    private static String coletarTexto(String descricao) {
         Scanner scanner = new Scanner(System.in);
         System.out.println(descricao);
         return scanner.nextLine();
     }
 }
- 
