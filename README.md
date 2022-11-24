@@ -4,7 +4,7 @@ Esta pasta contém o projeto Java para o desenvolvimento do Material de Aprendiz
 
 # Notas do Projeto
 
-### Critérios de aAceitação
+### Critérios de Aceite
 
 Para a atividade mapa da disciplina, analise o estudo de caso de um controle de estoque e desenvolva o programa para solucionar o problema.
 O Gestor da empresa que você trabalha, necessita manter um registro dos projetos de TI. Este controle, atualmente, não existe... as informações e iniciativas estão de forma informal em troca de e-mails e mensagens.
